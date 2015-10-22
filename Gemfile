@@ -45,3 +45,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'pry'
+gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'rbnacl', "~>3.2"
