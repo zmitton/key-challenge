@@ -4,6 +4,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :provider
       t.string :uid
       t.string :name
+      t.string :username
+      t.binary :public_key_string
+      t.binary :private_key_string
       t.string :oauth_token
       t.datetime :oauth_expires_at
 

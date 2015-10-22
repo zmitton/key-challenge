@@ -8,25 +8,29 @@
 </head>
 <body>
 <div id="user_nav">
+  Intended for fun only. Do not use for real security applications
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
-  <!--
-    Below we include the Login Button social plugin. This button uses
-    the JavaScript SDK to present a graphical Login button that triggers
-    the FB.login() function when clicked.
-  -->
+    <!--
+      Below we include the Login Button social plugin. This button uses
+      the JavaScript SDK to present a graphical Login button that triggers
+      the FB.login() function when clicked.
+    -->
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
 
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-  </fb:login-button>
-
-  <div id="status">
-  </div>
+    <div id="status">
+    </div>
 
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
     <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
   <% end %>
+
+  <nav>
+    <%= link_to "Public Keys", public_keys_path, id: "public_keys" %>
+  </nav>
 </div>
 <%= yield %>
 

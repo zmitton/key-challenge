@@ -1,0 +1,10 @@
+<h1>ALL PUBLIC KEYS</h1>
+<p>Your public key and everyone else's can and should be published. Here is the list of everyones public key who plays this game:</p>
+
+<ol>
+  <% @users.each do |user| %>
+    <li>
+    <%= "#{user.username}" %> :  <%= "#{user.public_key_string}" %>
+    </li>
+  <% end %>
+</ol>

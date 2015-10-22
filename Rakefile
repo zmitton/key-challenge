@@ -4,3 +4,5 @@
 require File.expand_path('../config/application', __FILE__)
 
 FacebookAuthExample::Application.load_tasks
+
+task yolo: ['db:drop', 'db:create', 'db:migrate']

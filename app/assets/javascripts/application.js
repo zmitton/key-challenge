@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$( document ).ready(function(){
+  $('#key_creation_button').on('click', function(){
+    alert("in here now");
+  })
+})

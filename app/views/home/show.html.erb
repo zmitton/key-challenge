@@ -1,2 +1,7 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<% if current_user %>
+  <h1>Generate a Key</h1>
+  <button id="key_creation_button">Create</button>
+  <div id="key_data"></div>
+<% else %>
+  <h1>Welcome. Please Log In Above</h1>
+<% end %>
