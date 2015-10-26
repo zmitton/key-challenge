@@ -4,7 +4,7 @@
 <ol>
   <% @users.each do |user| %>
     <li>
-    <%= "#{user.username}" %> :  <%= "#{user.public_key_string}" %>
+      <%= "#{user.username}" %> : <%= "#{user.base64_public_key}" %>
     </li>
   <% end %>
 </ol>

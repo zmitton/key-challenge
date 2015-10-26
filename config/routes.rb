@@ -4,8 +4,9 @@ FacebookAuthExample::Application.routes.draw do
     get 'signout', to: 'sessions#destroy', as: 'signout'
     get 'public_keys', to: 'public_keys#index', as: 'public_keys'
 
-    resources :sessions, only: [:create, :destroy]
-    resource :home, only: [:show]
+    resources :sessions,  only: [:create, :destroy]
+    resource  :home,      only: [:show]
+    resources :games,     only: [:show, :create, :index]
 
     root to: "home#show"
 end

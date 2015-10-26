@@ -1,6 +1,6 @@
 class PublicKeysController < ApplicationController
   def index
-    @users = User.select(:username, :public_key_string)
+    @users = User.select(:username, :base64_public_key)
   end
 
   # def create

@@ -1,3 +1,5 @@
+require 'base64'
+
 class User < ActiveRecord::Base
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -7,19 +9,17 @@ class User < ActiveRecord::Base
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.username = user.name
-      user.private_key_string = RbNaCl::PrivateKey.generate.to_s
-      user.public_key_string =  RbNaCl::PrivateKey.new(user.private_key_string.force_encoding("BINARY")).public_key.to_s
+      user.base64_private_key = Base64.encode64(RbNaCl::PrivateKey.generate)
+      user.base64_public_key =  Base64.encode64(RbNaCl::PrivateKey.new(Base64.decode64(user.base64_private_key)).public_key)
       user.save!
     end
   end
 
   def private_key
-    @private_key ||= RbNaCl::PrivateKey.new(private_key_string.force_encoding("BINARY"))
+    @private_key ||= RbNaCl::PrivateKey.new(Base64.decode64(base64_private_key))
   end
 
   def public_key
-    @public_key ||= RbNaCl::PrivateKey.new(public_key_string.force_encoding("BINARY"))
+    @public_key ||= private_key.public_key
   end
-
-  private
 end

@@ -11,16 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103173130) do
+ActiveRecord::Schema.define(version: 20151022215758) do
+
+  create_table "games", force: true do |t|
+    t.string  "status",     default: "not_started"
+    t.integer "creator_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "username"
-    t.binary   "public_key_string"
-    t.binary   "private_key_string"
+    t.string   "base64_public_key"
+    t.string   "base64_private_key"
     t.string   "oauth_token"
+    t.integer  "game_id"
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"

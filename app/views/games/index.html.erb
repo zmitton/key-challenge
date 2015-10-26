@@ -1,0 +1,7 @@
+<ul>
+  <% @games.each do |game| %>
+    <li>
+      <button>join <%= game.creator.username %>'s Game </button>
+    </li>
+  <% end %>
+</ul>

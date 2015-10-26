@@ -5,3 +5,8 @@
 <% else %>
   <h1>Welcome. Please Log In Above</h1>
 <% end %>
+
+
+<%= form_for :game, url: games_path do |f| %>
+  <%= f.submit %>
+<% end %>
